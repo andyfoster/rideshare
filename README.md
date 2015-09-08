@@ -1,4 +1,4 @@
-== README
+# Rideshare
 
 A simple CRUD Rails app for listing rides and contacting other members.
 
