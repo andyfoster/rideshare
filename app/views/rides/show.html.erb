@@ -1,0 +1,46 @@
+<div class="subjects shows">
+	<h2>Show Ride</h2>
+
+	<table>
+			<tr>
+				<th>Name</th>
+				<td><%= @ride.driver_name %></td>
+			</tr>
+			<tr>
+				<th>From</th>
+				<td><%= @ride.going_to %></td>
+			</tr>
+			<tr>
+				<th>To</th>
+				<td><%= @ride.leaving_from %></td>
+			</tr>
+			<tr>
+				<th>Expires</th>
+				<td><%= @ride.expiry_date %></td>
+			</tr>
+			<tr>
+				<th>Notes</th>
+				<td><%= @ride.notes %></td>
+			</tr>
+			<tr>
+				<th>To</th>
+				<td><%= @ride.leaving_from %></td>
+			</tr>
+			<tr>
+				<th>Created</th>
+				<td><%= @ride.created_at.to_s(:long_ordinal) %></td>
+			</tr>
+			<tr>
+				<th>Updated</th>
+				<td><%= @ride.updated_at.to_s(:long_ordinal) %></td>
+			</tr>
+	</table>
+
+</div>
+
+<h2>Message Driver</h2>
+
+<form action="hello" method="get" accept-charset="utf-8">
+	<textarea name="" placeholder="Hi <%= @ride.driver_name %>! Please take me!"></textarea>
+	<input type="submit" value="Send">
+</form>	

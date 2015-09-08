@@ -1,0 +1,16 @@
+<div class="subjects new">
+	<h2>Update Ride</h2>
+
+	<%= form_for(:ride, :url => {:action => 'update', :ride_secret => @ride.ride_secret}) do |f| %>
+
+	<%= render(:partial => 'ride_form', :locals => {:f => f}) %>
+
+
+	  <div class="form-buttons">
+	  	<%= submit_tag("Update Ride") %>
+	  </div>
+
+
+	<% end %>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="subjects new">
+	<h2>Create Ride</h2>
+
+	<%= form_for(:ride, :url => {:action => 'create'}) do |f| %>
+
+	<%= render(:partial => 'ride_form', :locals => {:f => f}) %>
+
+
+	<%= f.hidden_field :ride_secret, :value => SecureRandom.hex(20) %>
+
+	  <div class="form-buttons">
+	  	<%= submit_tag("Create Ride") %>
+	  </div>
+
+
+	<% end %>
+
+</div>

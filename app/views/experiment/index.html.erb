@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="jquery/jquery-1.8.0.js"></script>
+
+<script>
+
+('a[data-toggle=popover]').popover()
+
+
+(document).on("click", ".open-MessageDialog", function () {
+     var driverId = (this).data('id')
+     (".modal-body #driverId").val( driverId )
+})
+
+    ('.modal').tooltip({
+      selector: "a[data-toggle=tooltip]"
+    })
+    
+('#messageTooltip').tooltip()
+
+
+</script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+ -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+    <title>Hokkaido RideShare</title>
+    <style type="text/css" media="screen">
+    	.button a {
+	    	text-decoration: none
+	    	color: white
+}
+    	
+    .datePosted {
+	    font-style: italic
+	    color: gray
+    }
+    .goingTo {
+	    color: green
+    }
+    .goingFrom {
+	    color:orange
+    }
+    
+    </style>
+</head>
+<body>
+
+
+
+<h1>Hokkaido RideShare</h1>
+<div><a href="">日本語で見る</a></div>
+<span class="datePosted">powered by OpenRideShare, a port of CommunityMessage<a href="#">(github)</a></span>
+
+
+<div>
+<button class="btn btn-info btn-lg" data-toggle="modal" data-target="#driverRegister">
+<span class="glyphicon glyphicon-road"></span>
+Sign up as a driver</button>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#passengerRegister">
+<span class="glyphicon glyphicon-user"></span> Sign up as a passenger</button>
+</div>
+<h3>Drivers</h3>
+
+<p>Sort by: <u>going to</u>, <u>leaving from</u>, <u>date</u>, <u>date posted</u></p>
+<p>Tags: <u>Asahikawa</u>, <u>Chitose</u>, <u>Eniwa</u>, <u>Sapporo</u></p>
+<div id="" class="col-md-12">
+	
+
+<table class="table table-condensed">
+<%
+	drivers = ["Andy", "Milly", "Taylor", "Stacey", "Robbie", "Dave", "Hattie"]
+	places = ["Sapporo", "Asahikawa", "Kushiro", "Wakkanai", "Chitose", "Otaru", "Akan", "Kitami", "Tomakomai", "Kitahiroshima", "Iwamizawa", "Takinoue", "Monbetsu", "Muroran", "Niseko", "Rusutsu"]
+	days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+	drivers.each do |driver| 
+ %>
+<tr>
+		<td><strong><%= driver %></strong> 
+		is going to <strong class="goingTo"><%= places[array_rand(places)] %></strong> 
+		from <strong class="goingFrom"><%= places[array_rand(places)] %></strong>
+		 on <strong><%= days[array_rand(days)] %> <%= rand(10,20)  %> June</strong> 
+		 with <strong><%= rand(2, 4) %></strong> spaces.
+		 <!-- <button type="button" class="btn btn-sml" data-container="body" data-toggle="popover" data-placement="top" data-content="I'm leaving early in the morning">
+		 blah</button> -->
+		 <span class="label label-warning">
+		 <span class="glyphicon glyphicon-comment"></span> Notes</span>
+		 <span title="phone number provided">[ph]</span>
+		 <span title="LINE id provided">[LINE]</span>
+		 <span title="facebook link provided">[fb]</span>
+		 <span class=""><a href=""><%= rand(2,5)  %> answered questions</a></span>
+
+		</td>
+		<td>
+		 <a class="open-MessageDialog btn btn-success btn-sm" data-toggle="modal" data-target="#message" data-id="DRIVER_ID_GOES_HERE" href="#openMessageDialog"><span class="glyphicon glyphicon-envelope"></span> <%= driver %>に送信</a>
+		 </td>
+		 <td>
+		 <span class="text-muted">posted <%= rand(10,20)  %> June 
+		 <%= rand(9,22)  %>:<%= rand(10,59)  %></span>
+		 </td>
+</tr>
+	
+<% end  %>
+</table>
+
+</div>
+<br>
+<h3>Passengers</h3>
+
+<div id="" class="col-md-12">
+	
+
+<table class="table table-condensed">
+<%
+	drivers = array("William", "Charles", "Chris", "Paul", "Lauren", "Elise", "Joey")
+	places = array("Sapporo", "Asahikawa", "Kushiro", "Wakkanai", "Chitose", "Otaru", "Akan", "Kitami", "Tomakomai", "Kitahiroshima", "Iwamizawa", "Takinoue", "Monbetsu", "Muroran", "Niseko", "Rusutsu")
+	days = array("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
+	drivers.each |driver| do {
+ %>
+<tr>
+		<td><strong><%= driver %></strong> 
+		is looking for a ride to <strong class="goingTo"><%= places[array_rand(places)] %></strong> 
+		from <strong class="goingFrom"><%= places[array_rand(places)] %></strong>
+		 on <strong><%= days[array_rand(days)] %> <%= rand(10,20)  %> June</strong>.
+		 <!-- <button type="button" class="btn btn-sml" data-container="body" data-toggle="popover" data-placement="top" data-content="I'm leaving early in the morning">
+		 blah</button> -->
+
+		 <span class="label label-warning">
+		 <span class="glyphicon glyphicon-comment"></span> Notes</span>
+<!-- 		 <span class=""><a href="">5 answered questions</a></span>
+ -->
+		</td>
+
+		<td>
+		 <a class="open-MessageDialog btn btn-success btn-sm" data-toggle="modal" data-target="#message" data-id="DRIVER_ID_GOES_HERE" href="#openMessageDialog"><span class="glyphicon glyphicon-envelope"></span> Message <%= driver %></a>
+		 </td>
+		 <td>
+		 <span class="text-muted">posted <%= rand(10,20)  %> June 
+		 <%= rand(9,22)  %>:<%= rand(10,59)  %></span>
+		 </td>
+</tr>
+	
+<% end  %>
+</table>
+
+</div>
+
+
+<div id="">
+	<strong>Steve</strong> is looking for a ride to <strong>Sapporo</strong> from <strong>Kushiro</strong> on <strong>Sat 29 June</strong>. <span class="button">Message Steve</span>
+</div>
+<div>
+	Sarah is keen to go to Shiritoko between 8 and 15 of August 
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div class="modal fade" id="passengerRegister">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+        <h4 class="modal-title">Passenger's Form</h4>
+      </div>
+      <div class="modal-body">
+      
+<form method="" accept-charset="utf-8">
+
+	I, <input type="text" placeholder="Bob" size=8>,
+	need to get to: <input type="text" placeholder="Sapporo" size=8>
+	on <input type="datetime" placeholder="Sat 28 June">
+	but I am currently in <input type="text" placeholder="Hakodate" size=8>
+	<br>
+	Remove this listing on: <input type="datetime" placeholder="Fri 27 June" disabled="disabled" style="curser:pointer">
+	<br>
+	My Keitai Mail Address is <input type="text" placeholder="blahblah1234@i.softbank.jp" size="30">
+	<br>
+	<i class="text-primary">You will be emailed a unqiue link to edit this listing</i>
+	<br>
+	* Oh, I should add, <input type="text" placeholder="I can provide some sick beats" size="50"></text>
+	<p><input type="submit" value="Upload"></p>
+</form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Register</button>
+      </div>
+</form>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="driverRegister">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+        <h4 class="modal-title">Driver's Form</h4>
+      </div>
+      <div class="modal-body">
+
+      <form action="index.php" method="" accept-charset="utf-8">
+	I, <input type="text" placeholder="Bob" size=8>,
+	am driving to: <input type="text" placeholder="Sapporo" size=8>
+	from <input type="text" placeholder="Hakodate" size=8>
+	on <input type="datetime" placeholder="Sat 28 June" size="10">
+	<br>
+	I have <input type="text" size="1" placeholder="4"> spaces in my vehicle
+	<br>
+	<i><span class="text-warning">Remember to update the spaces when they get filled up</span></i>
+	<br>
+	Remove this listing on: <input type="datetime" placeholder="Fri 27 June" disabled="disabled" style="curser:pointer">
+	<br>
+	My Keitai Mail Address is <input type="text" placeholder="blahblah1234@i.softbank.jp" size="30">
+	<br>
+	<i class="text-primary">You will be emailed a unique link to edit this listing</i>
+	<br>
+	* Oh, I should add, <input type="text" placeholder="I'm planning on leaving early in the morning" size="50"></text>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Register</button>
+      </div>
+</form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="message">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+			<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+        <h4 class="modal-title">Message</h4>			
+			</div>
+			
+			<div class="modal-body">
+				<form action="index.php" method="" accept-charset="utf-8">
+				
+<!-- 				Driver ID:<input type="text" name="driverId" id="driverId" value="" />
+ -->				<br>
+				I am<input type="text" placeholder="Bob" size=8>, my email is <input type="text" placeholder="blahblah1234@i.softbank.jp" size="30">
+				<br> and my phone number is <input type="text" placeholder="080-1234-5678" size="30">
+				<br>
+				 <a href="#" data-toggle="tooltip" title="first tooltip" id="messageTooltip">Type (hover)</a>
+				 <br>
+				<textarea rows="10" cols="50"></textarea>
+			
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Send</button>
+				</form>			
+
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

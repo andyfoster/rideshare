@@ -1,0 +1,49 @@
+<table summary="Ride form fields">
+
+	<tr>
+		<td>Where are you going?　どこへ行く？</br>
+		<%= f.text_field(:going_to) %></td>
+
+		<td>Where are you leaving from? どこから出る？</br>
+		<%= f.text_field(:leaving_from) %></td>
+	</tr>
+	<tr>
+		<td>Date Leaving　出発日付</br>
+		<%= f.text_field(:date_leaving) %></td>
+
+		<td>Expiry Date (hide from site)　失効日</br>
+		<%= f.text_field(:expiry_date) %></td>
+	</tr>
+	<tr>
+
+		<td>Name お名前<br><%= f.text_field(:driver_name) %></td>
+
+
+		<td>Email Address　メールアッドレス</br>
+		<%= f.text_field(:driver_email) %></td>
+
+		<td>Phone Number (optional)　電話番号　（要否）</br>
+		<%= f.text_field(:driver_phone) %></td>
+	</tr>
+	<tr>
+		<td>Seats in Your Vehicle　空き席数</br>
+		<%= f.select(:seats_in_car, options_for_select([
+        [1, 1], 
+        [2, 2], 
+        [3, 3], 
+        [4, 4], 
+        [5, 5]], 2))
+      %>
+		</td>
+	</tr>
+	<tr>
+		<td>Notes　あとメモ？</br>
+		<%= f.text_field(:notes) %></td>
+	</tr>
+<!-- 	<tr>
+		<td>How much does it cost to fill your car?</br>
+		<input type="text">
+		</td>
+	</tr> -->
+
+</table>

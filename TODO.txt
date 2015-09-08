@@ -1,0 +1,11 @@
+jquery and fade out alert box
+
+favicon - steal from other app
+
+get a javascript sorting script to sort the listings on the fly
+
+bootstrap??
+
+get mail working to email people when something happens.
+
+have a freestyle place for people to put 'asking for rides' and structure later - only expiry and notes

@@ -1,0 +1,67 @@
+<h3>Drivers</h3>
+
+<p>Sort by: <u>going to</u>, <u>leaving from</u>, <u>date</u>, <u>date posted</u></p>
+<p>Tags: <u>Asahikawa</u>, <u>Chitose</u>, <u>Eniwa</u>, <u>Sapporo</u></p>
+<div id="" class="col-md-12">
+
+<table class="table table-condensed" style="width: 80%">
+
+<% @rides.each do |ride| %>
+
+<tr>
+		<td><strong><%= ride.driver_name %></strong> 
+		is going to <strong class="goingTo"><%= ride.going_to %></strong> 
+		from <strong class="goingFrom"><%= ride.leaving_from %></strong>
+		 on <strong><%= ride.date_leaving.strftime("%a %d %b") %></strong> 
+		 with <strong><%= pluralize(ride.seats_in_car, 'space') %></strong>. Fuel for trip: ~¥<%= cycle(2, 3, 4, 5)%>000
+
+		 <!-- <button type="button" class="btn btn-sml" data-container="body" data-toggle="popover" data-placement="top" data-content="I'm leaving early in the morning">
+		 blah</button> -->
+		 <!-- <span class="label label-warning"> 
+		 <span class="glyphicon glyphicon-comment"></span> Notes</span>
+		 <span title="phone number provided">[ph]</span>
+		 <span title="LINE id provided">[LINE]</span>
+		 <span title="facebook link provided">[fb]</span>
+		 <span class=""><a href="">2 answered questions</a></span> -->
+
+		</td>
+		<td>
+		 <span class="glyphicon glyphicon-envelope"></span> </button>
+<%= link_to("Email #{ride.driver_name}", {:action => 'show', :id => ride.id}) %>
+		 </td>
+		 <td>
+		 <span class="text-muted">posted <%= ride.created_at.strftime("%d %b") %> 
+		 </span>
+		 </td>
+		 <td>
+ <%= link_to("Edit", {:action => 'edit', :ride_secret => ride.ride_secret}) %></td>
+ <td>
+<a title="<%= ride.notes %>" style="cursor: pointer">Notes</a>
+ </td>
+</tr>
+	
+<% end  %>
+</table>
+
+<h3>We'd love a ride!</h3>
+<p>You don't have a car but would love to go on a roadtrip somewhere? <a href="" title="Post request">Post request</a></p>
+<table>
+		<tr>
+			<td><b>James</b> would love a ride to <strong class="goingTo">Hakodate</strong> from <strong class="goingFrom">Hamatonbetsu but can get to Rumoi</strong> on <b>Sat April 4</b></td>
+			<td><i>"The Friday or Saturday is fine! I'll put in for gas money!"</i></td>
+		</tr>
+		<tr>
+			<td><b>Sally and Pete</b> would love a ride to <strong class="goingTo">Shakotan</strong> from <strong class="goingFrom">somewhere around Sapporo</strong> on <b>Fri April 4</b></td>
+			<td><i>"Anyone want to come camping with us? We have a big tent!"</i></td>
+			<td><a href="">Email</a></td>
+		</tr>
+</table>
+
+
+<div>
+<button class="btn btn-info btn-lg" data-toggle="modal" data-target="#driverRegister">
+<span class="glyphicon glyphicon-road"></span>
+Sign up as a driver</button>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#passengerRegister">
+<span class="glyphicon glyphicon-user"></span> Sign up as a passenger</button>
+</div>

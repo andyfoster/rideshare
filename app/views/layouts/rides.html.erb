@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Hokkaido Rideshare</title>
+ 	<%= stylesheet_link_tag('application', :media => 'all') %>
+	<%= javascript_include_tag('application') %>
+
+	<!-- <link rel="stylesheet" href="assets/bootstrap/bootstrap.css"> -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+	<style type="text/css" media="screen">
+		html {
+			margin: 0;
+			margin: 0;
+		}
+		body {
+			font-family: sans-serif, Helvetica;
+			line-height: 1.5em;
+		}
+		a, a:visited {
+			color: grey;
+		}
+		a:hover {
+			color: black;
+			text-decoration: none;
+		}
+    	.button a {
+	    	text-decoration: none;
+	    	color: white;
+		}
+    	
+    .datePosted {
+	    font-style: italic;
+	    color: gray;
+    }
+    .goingTo {
+	    color: green;
+    }
+    .goingFrom {
+	    color:orange;
+    }
+    
+
+    .notice {
+    	position: absolute;
+    	opacity: .5;
+    	margin: 0 auto;
+    	top: 10px;
+    	left: 400px;
+    	border: solid 1px green;
+    	background-color: lightgreen;
+    	padding: 20px;
+    	width: 50%;
+    	text-align: center;
+    }
+    </style>
+
+</head>
+<body>
+	<div class="container">
+	<h1><%= link_to("Hokkaido Rideshare", {:action => 'index'}) %></h1>	
+	<%= link_to("About Site", {:action => 'about'}) %>
+
+ 	 <%= link_to("Add New Ride", {:action => 'new'}, :class => 'btn btn-info btn-sm') %>
+<a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#driverRegister">
+<span class="glyphicon glyphicon-road"></span>
+Sign up as a driver</a>
+
+ 	 <a href="" title="">Admin Login</a>
+  	<hr>
+  	<br>
+			<% if !flash[:notice].blank? %>
+			  <div class="notice">
+			    <%= flash[:notice] %>
+			  </div>
+			<% end %>
+
+			
+	<%= yield %>
+
+
+
+	<br><br><br>
+	<hr>
+	<div>
+		&copy; Andy
+	</div>
+	</div>
+
+
+
+</body>
+</html>
+
+
+
